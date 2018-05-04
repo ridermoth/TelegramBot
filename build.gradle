@@ -15,6 +15,19 @@ dependencies {
     compile("org.telegram:telegrambots:3.6")
 }
 
-task stage(dependsOn: ['build', 'clean'])
+//create a single Jar with all dependencies
+task stage(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'Main'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+
+    dependsOn (['build', 'clean'])
+}
+
 build.mustRunAfter clean
 
