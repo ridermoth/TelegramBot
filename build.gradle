@@ -14,3 +14,5 @@ dependencies {
 
     compile("org.telegram:telegrambots:3.6")
 }
+
+task stage(dependsOn: ['installDist'])
