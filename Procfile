@@ -1,1 +1,1 @@
-web: java -cp build/libs/telegrambot-1.0-SNAPSHOT.jar Main
+worker: java -cp build/libs/telegrambot-1.0-SNAPSHOT.jar Main
