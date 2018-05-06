@@ -6,17 +6,17 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 public class MyFirstTelegramBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
-        // We check if the update has a message and the message has text
+        // apakah update terdapat message dan message tersebut berupa pesan teks
         if (update.hasMessage() && update.getMessage().hasText()) {
-            // Set variables
+            // Set variabel
             String message_text = update.getMessage().getText();
             long chat_id = update.getMessage().getChatId();
 
-            SendMessage message = new SendMessage() // Create a message object object
+            SendMessage message = new SendMessage() // membuat objek pengiriman
                     .setChatId(chat_id)
                     .setText(message_text);
             try {
-                execute(message); // Sending our message object to user
+                execute(message); // melakukan pengiriman chat ke user
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
